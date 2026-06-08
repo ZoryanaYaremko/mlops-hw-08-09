@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mlflow-postgres
-  namespace: infra-tools
+  namespace: argocd
 
 spec:
   destination:
@@ -14,14 +14,20 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: postgresql
-    targetRevision: 12.5.6
+    targetRevision: 15.5.38
 
     helm:
       valuesObject:
+        image:
+          registry: docker.io
+          repository: bitnami/postgresql
+          tag: latest
+
         auth:
           username: mlflow
           password: mlflowpass
           database: mlflow
+          postgresPassword: postgrespass
 
         primary:
           persistence:

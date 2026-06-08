@@ -1,0 +1,5 @@
+run_id=6bbff913ae1247969fb3f9eb4982053d
+learning_rate=0.05
+epochs=150
+accuracy=0.9473684210526315
+loss=0.09440196408910044

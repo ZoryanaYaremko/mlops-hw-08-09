@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: minio
-  namespace: infra-tools
+  namespace: argocd
 
 spec:
   destination:
@@ -18,6 +18,11 @@ spec:
 
     helm:
       valuesObject:
+        image:
+          registry: docker.io
+          repository: bitnamilegacy/minio
+          tag: 2024.3.5-debian-12-r0
+
         auth:
           rootUser: minio
           rootPassword: minio123
